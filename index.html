@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="XHSTI — 小红书土著居民人格测试" />
+    <title>XHSTI · 小红书人格测试</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- 自定义全屏背景图：将图片命名为 bg.jpg 放入 backgrounds/（或用 bg.webp 并改 styles.css 中 .bg-photo 的 url） -->
+    <div class="bg-photo" aria-hidden="true"></div>
+    <div class="bg-scrim" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+
+    <main class="shell" id="app">
+      <header class="brand">
+        <p class="brand-kicker">小红书土著居民类型指标</p>
+        <h1 class="brand-title">XHSTI</h1>
+        <p class="brand-sub">
+          你们有没有想过，如果小红书有人格测试……<br />
+          根据你点赞的内容、深夜刷到的帖子、收藏夹里吃灰的攻略，<br />
+          直接给你分配一个「XHSTI」。
+        </p>
+        <!-- 宣传语下方配图：把图放进 images/ 并命名为 home-hero.jpg，或改 src 为你的路径 -->
+        <figure class="brand-hero">
+          <img
+            class="brand-hero-img"
+            src="images/home-hero.jpg"
+            alt="XHSTI 测试宣传图"
+            width="720"
+            height="480"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </header>
+
+      <!-- Landing -->
+      <section class="card panel" id="panel-intro">
+        <div class="intro-badge">15 题 · 约 2 分钟</div>
+        <h2 class="panel-title">准备好了吗？</h2>
+        <p class="panel-lead">
+          没有标准答案，按第一反应选就好。结果仅供娱乐，不构成任何建议。
+        </p>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="btn-start">开始测试</button>
+        </div>
+        <p class="fineprint">数据仅在本地浏览器计算，不会上传服务器。</p>
+      </section>
+
+      <!-- Quiz -->
+      <section class="card panel" id="panel-quiz" hidden>
+        <div class="quiz-top">
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+          <div class="quiz-meta">
+            <span class="dim-pill" id="dim-label"></span>
+            <span class="q-count" id="q-count"></span>
+          </div>
+        </div>
+        <h2 class="q-title" id="q-title"></h2>
+        <ul class="options" id="q-options" role="list"></ul>
+      </section>
+
+      <!-- Result -->
+      <section class="card panel panel-result" id="panel-result" hidden>
+        <p class="result-kicker" id="result-kicker"></p>
+        <h2 class="result-title" id="result-title"></h2>
+        <!-- 人格结果配图：将 xhr-1.jpg～xhr-8.jpg 放入 results/，与 XHR-1～XHR-8 一一对应；扩展名可在 app.js 顶部 RESULT_IMAGE_EXT 修改 -->
+        <figure class="result-figure">
+          <div class="result-image-wrap" id="result-image-wrap">
+            <img id="result-image" alt="" width="800" height="600" decoding="async" />
+          </div>
+          <figcaption class="result-image-hint" id="result-image-hint" hidden></figcaption>
+        </figure>
+        <p class="result-code" id="result-code"></p>
+        <p class="result-dims" id="result-dims"></p>
+        <p class="result-tags" id="result-tags"></p>
+        <div class="score-board" id="score-board" aria-label="八维得分"></div>
+        <blockquote class="result-quote" id="result-quote"></blockquote>
+        <div class="actions actions-split">
+          <button type="button" class="btn btn-secondary" id="btn-retake">重新测试</button>
+          <button type="button" class="btn btn-primary" id="btn-share">复制分享链接</button>
+        </div>
+        <p class="share-hint" id="share-hint" role="status"></p>
+      </section>
+
+      <footer class="footer">
+        <span>XHSTI</span>
+        <span class="dot">·</span>
+        <span>娱乐向人格测试</span>
+      </footer>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
